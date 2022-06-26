@@ -1,0 +1,67 @@
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    animation: 5s rotate linear infinite;
+    background-color: #262727;
+    /* background: linear-gradient(var(--angle), #f8f8f8 0% 5%, #262727 90%); */
+}
+
+.box {
+    --angle: 0deg;
+    display: flex;
+    width: 100px;
+    height: 40px;
+    text-transform: uppercase;
+    background: #242323;
+    color: #898989;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    border-image-slice: 1;
+    border-width: 1px;
+    animation: 5s rotate linear infinite;
+    /* background: linear-gradient(var(--angle), #6c6b6b48, #161616); */
+    border-image-source: linear-gradient(var(--angle), #f8f8f848, #242323);
+    transition: --angle .3s linear, all .3s linear;
+}
+.we{
+    width: 400px;
+    height: 500px;
+}
+/* @keyframes rotate {
+    to {
+        --angle: 360deg;
+    }
+
+} */
+
+#cursor{
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 150px 50px #fff;
+    border-radius: 50px;
+    transition: margin .1s ease;
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            flex-direction: row;
+            animation: 5s rotate linear infinite;
+            background-color: #424242;
+            /* background: linear-gradient(var(--angle), #f8f8f8 0% 5%, #262727 90%); */
+        }
+
+        .box {
+            position: relative;
+            display: flex;
+            width: 100px;
+            height: 100px;
+            text-transform: uppercase;
+            background: #242323;
+            color: #898989;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .box .content {
+            width: calc(100% - 2.5px);
+            height: calc(100% - 3px);
+            margin-top: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #242323;
+            backdrop-filter: blur(50px);
+            z-index: 1;
+            transition: background .5s ease,color .5s ease;
+        }
+        .box .content:hover{
+            background: #242323bb;
+            color: #fff;
+            border: 1px solid #fff;
+            transition: background .5s ease,color .5s ease,border .5s ease;
+        }
+        .box .border {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background-color: aliceblue; */
+            overflow: hidden;
+        }
+
+        .box .border .effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-shadow: 0 0 100px 80px rgb(255 255 255 / 59%);
+            border-radius: 50px;
+            /* transition: margin s ease; */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+        <div class="box">
+            <div class="border">
+                <div class="effect"></div>
+            </div>
+            <div class="content">
+                test
+            </div>
+        </div>
+        <div class="box">
+            <div class="border">
+                <div class="effect"></div>
+            </div>
+            <div class="content">
+                test
+            </div>
+        </div>
+    </div>
+    <div>
+
+        <div class="box">
+            <div class="border">
+                <div class="effect"></div>
+            </div>
+            <div class="content">
+                test
+            </div>
+        </div>
+        <div class="box">
+            <div class="border">
+                <div class="effect"></div>
+            </div>
+            <div class="content">
+                test
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const body = document.getElementsByTagName('body')[0]
+    body.addEventListener('mousemove', () => {
+        const element2 = Array.from(document.querySelectorAll('.box'))
+        element2.forEach((element, id) => {
+            const element3 = element.querySelectorAll('.effect')[0]
+            let pos2 = element.offsetTop + window.scrollY;
+            let pos1 = element.offsetLeft + window.scrollX;
+            element3.style.top = `-${pos2}px`;
+            element3.style.left = `-${pos1}px`;
+            var e = window.event;
+            var posX = e.clientX + window.scrollX;
+            var posY = e.clientY + window.scrollY;
+            element3.style.setProperty('margin-top', `${posY}px`)
+            element3.style.setProperty('margin-left', `${posX}px`)
+        })
+    })
+
+
+</script>
+
+</html>
